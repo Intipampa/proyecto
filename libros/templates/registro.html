@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Usuario</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f2f5; }
+        .registro-container { background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #333; }
+        form p { margin-bottom: 15px; }
+        input[type="text"], input[type="password"], input[type="email"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; border: none; background-color: #28a745; color: white; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #218838; }
+        .login-link { text-align: center; margin-top: 20px; }
+        .errorlist { color: red; }
+    </style>
+</head>
+<body>
+    <div class="registro-container">
+        <h1>Registro de Usuario</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <p>
+                {{ field.label_tag }}<br>
+                {{ field }}
+                {% for error in field.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </p>
+            {% endfor %}
+            <button type="submit">Registrarse</button>
+        </form>
+        <div class="login-link">
+            ¿Ya tienes una cuenta? <a href="{% url 'login' %}">Iniciar Sesión</a>
+        </div>
+    </div>
+</body>
+</html>

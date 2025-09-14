@@ -1,0 +1,9 @@
+# Ignora archivos de entorno virtual y caché
+venv/
+__pycache__/
+
+# Ignora archivos de la base de datos
+*.sqlite3
+
+# Ignora archivos de configuracion sensible
+proy_biblioteca/settings.py
